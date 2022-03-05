@@ -23,9 +23,6 @@ class Seal:
             self.jsonObject = json.load(jsonFile)
             jsonFile.close()
             pairs = self.jsonObject()
-            for key, value in pairs:
-                if key not in ['Revers','Avers']:
-                    inst += ("\t"*2 + "wdt:" + key + " \"" + value + "\" ;" + "\n")
         
         nlp = spacy.load("en_core_web_sm")
         '''if 'Obverse' in self.jsonObject:
