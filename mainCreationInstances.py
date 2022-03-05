@@ -19,9 +19,6 @@ onto += ("#################################################################\n" +
          #"#################################################################\n\n")
 
 filepath = "Sceaux_byzantins_v5.json"
-#files = os.listdir(filepath)
-#files.sort(key=lambda x:int(x[:-5]))
-
 i = 0
 
 seal = Seal(filepath)
