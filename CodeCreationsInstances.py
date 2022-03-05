@@ -2,10 +2,6 @@ from itertools import count
 import json
 import spacy
 
-with open('Sceaux_byzantins_v5.json') as json_file:
-    data = json.load(json_file)
-print(data)
-
 class Seal:
     # Compteur des instances
     _ids = count(0)
@@ -21,8 +17,10 @@ class Seal:
                 "\t"*4 + ":Sceau ;\n")
         with open(self.filename, 'r', encoding="utf-8") as jsonFile:
             self.jsonObject = json.load(jsonFile)
+            #print(self.jsonObject)
             jsonFile.close()
-            pairs = self.jsonObject()
+            pairs = self.jsonObject
+            #print(pairs)
         
         nlp = spacy.load("en_core_web_sm")
         '''if 'Obverse' in self.jsonObject:
@@ -30,12 +28,11 @@ class Seal:
             for w in obverse.ents:
                 if w.label_ == 'PERSON':
                     inst += ("\t"*2 + ":represents :" + w.text.replace(" ", "_") + str(self.id) + " ;" + "\n")'''
-         
-        titre = nlp(self.jsonObject['Titre'])
+        for i in range(len(self.jsonObject)):
+            titre = nlp(self.jsonObject[i]['Titre'])
         for w in titre.ents:
             if w.label_ == 'DATE':
                  inst += ("\t"*2 + ":appartient_a :" + w.text.replace(" ", "_") + " ;" + "\n")
-    
         return inst + "\n"*2
 
 def createPrefixes():
