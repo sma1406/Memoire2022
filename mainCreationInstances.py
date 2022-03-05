@@ -28,3 +28,4 @@ i = i + 1
 # Générer TTL
 with open('OntologieSceaux1.ttl', 'w', encoding="utf-8") as writer:
     writer.write(onto)
+i = 0
